@@ -1,0 +1,226 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template for my MSc Thesis - Drafts and Final versions
+% Author: Katinka Tuinstra
+% Date made: April 2020
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper, 11pt]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry}
+\usepackage[parfill]{parskip}
+
+\usepackage[style=apa, backend=biber]{biblatex}
+%\renewcommand\nameyeardelim{, }
+
+
+\makeatother
+\usepackage{sectsty}
+\usepackage{siunitx}
+\usepackage{soul}
+
+
+
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{svg}
+\usepackage{tocloft}
+
+
+% Chapters, font etc %
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\usepackage{courier}
+
+\usepackage[toc, title]{appendix}
+\usepackage{mathtools}
+\usepackage{gensymb}
+
+
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color, pbox}
+
+\definecolor{gray75}{gray}{0.75}
+
+\newcommand*{\hsp}{\hspace{20pt}}
+\newcommand{\titlepbox}[1]{\pbox[t]{0.7\textwidth}{#1}}
+
+\titleformat{\chapter}[block]{\Huge\bfseries}{\hfill\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries\titlepbox}
+
+
+% Math %
+\usepackage{esvect}
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Figures %
+\usepackage{placeins}
+\usepackage{wrapfig}
+%\usepackage{subfigure}
+%\PassOptionsToPackage{subfigure}{tocloft}
+\usepackage{fixmetodonotes}
+%\usepackage[subfigure]{tocloft}
+\usepackage{subcaption}
+\captionsetup{font=footnotesize,labelfont={bf,sf}}
+\usepackage{lscape}
+\usepackage[figurewithin=section,labelfont=bf,justification=centering]{caption}
+\usepackage{pdfpages}
+\usepackage{placeins}
+
+
+\usepackage{rotating}
+\makeatletter
+\newcommand{\rotateFigurePageForLabel}[1]{%
+  \zlabel{#1}%
+  \AtBeginShipout{%
+  \ifnum\c@page=\zref@extractdefault{#1}{abspage}{0}
+    \pdfpageattr{/Rotate 90}
+  \fi}
+}
+
+
+% Tables %
+\usepackage{booktabs}
+
+% References %
+\usepackage{csquotes}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks,linkcolor={black},citecolor={blue},urlcolor={black}}
+\usepackage[english]{babel}
+\graphicspath{{../}}% Add relevant paths
+\addbibresource{../Text/ref.bib}
+
+
+
+
+
+
+% Used to be able to cite in subfiles
+\makeatletter
+\newrobustcmd*{\nobibliography}{%
+  \@ifnextchar[%]
+    {\blx@nobibliography}
+    {\blx@nobibliography[]}}
+\def\blx@nobibliography[#1]{}
+\appto{\skip@preamble}{\let\printbibliography\nobibliography}
+\makeatother
+\DeclareLanguageMapping{american}{american-apa}
+\renewcommand*{\bibfont}{\small}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% font setups %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% Commands
+\chapterfont{\normalfont\sffamily\bfseries}
+\allsectionsfont{\normalfont\sffamily\bfseries} % sans-serif titles
+\renewcommand{\cftsecfont}{\sffamily\bfseries}
+\renewcommand{\cfttoctitlefont}{\normalfont\Large\sffamily\bfseries}
+\renewcommand{\cftloftitlefont}{\normalfont\Large\sffamily\bfseries}
+\renewcommand{\cftlottitlefont}{\normalfont\Large\sffamily\bfseries}
+\captionsetup[table]{skip=5pt}              % caption margin of tables
+
+\usepackage{hyperref}
+\usepackage{subfiles}
+% % % Begin Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\pagenumbering{roman} % use roman numbering in the preamble
+
+\input{titlepage.tex}
+
+\clearpage
+
+\chapter*{\centering Abstract}
+\addcontentsline{toc}{chapter}{Abstract} % adds Abstract to TOC
+\blindtext
+\subfile{Abstract.tex}
+
+\clearpage
+
+
+\chapter*{\centering Aknowledgements}
+\addcontentsline{toc}{chapter}{Aknlowledgements} % adds Abstract to TOC
+\blindtext
+\subfile{Aknowledgements.tex}
+
+\clearpage
+
+\chapter*{\centering Acronyms}
+\addcontentsline{toc}{chapter}{Acronyms} % adds Abstract to TOC
+\subfile{Acronyms.tex}
+\clearpage
+
+\clearpage
+
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+
+
+
+
+% Preample -----------------------------------------------------
+
+% --------------------------------------------------------------
+
+% Chapters -----------------------------------------------------
+
+
+
+
+
+
+
+\pagenumbering{arabic} % Use arabic numbering in the main matter
+
+
+\chapter{Introduction}
+\subfile{01introduction.tex}
+
+\chapter{Theoretical background}
+\subfile{02Theory.tex}
+
+\chapter{Methods}
+\subfile{03Methods.tex}
+
+\chapter{Results \& Discussion}
+\subfile{04Results.tex}
+
+\chapter{Conclusions}
+\subfile{06Conclusions.tex}
+
+
+\clearpage
+
+\printbibliography
+
+\clearpage
+
+
+\begin{appendices}
+\subfile{99Appendix.tex}  
+\end{appendices}
+
+
+
+
+
+
+
+
+
+
+
+
+
+% End document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
