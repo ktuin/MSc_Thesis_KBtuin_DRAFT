@@ -14,7 +14,7 @@
 \usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry}
 \usepackage[parfill]{parskip}
 
-\usepackage[style=apa, backend=biber]{biblatex}
+\usepackage[style=apa, backend=biber, natbib]{biblatex}
 %\renewcommand\nameyeardelim{, }
 
 
@@ -28,6 +28,8 @@
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{svg}
 \usepackage{tocloft}
+\cftsetindents{figure}{0em}{3.5em}
+\cftsetindents{table}{0em}{3.5em}
 
 
 % Chapters, font etc %
@@ -58,6 +60,7 @@
 \usepackage{amssymb}
 
 % Figures %
+\usepackage{subfig}
 \usepackage{placeins}
 \usepackage{wrapfig}
 %\usepackage{subfigure}
@@ -192,8 +195,11 @@
 \chapter{Methods}
 \subfile{03Methods.tex}
 
-\chapter{Results \& Discussion}
+\chapter{Results \& Analysis}
 \subfile{04Results.tex}
+
+\chapter{Discussion}
+\subfile{05Discussion.tex}
 
 \chapter{Conclusions}
 \subfile{06Conclusions.tex}
